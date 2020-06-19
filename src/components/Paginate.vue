@@ -11,7 +11,7 @@
     <li v-for="(page, idx) in pages" :class="[pageClass, page.selected ? activeClass : '', page.disabled ? disabledClass : '', page.breakView ? breakViewClass: '']" :key="idx">
       <a href="javascript:void(0)" v-if="page.breakView" :class="[pageLinkClass, breakViewLinkClass]" :aria-label="helperText.breakViewLinkText" tabindex="-1" aria-hidden="true"><slot name="breakViewContent">{{ breakViewText }}</slot></a>
       <a href="javascript:void(0)" v-else-if="page.disabled" :class="pageLinkClass" :aria-label="helperText.pageLinkText">{{ page.content }}7777</a>
-      <a href="javascript:void(0)" v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :aria-label="helperText.pageLinkText + ' ' + page.content" :aria-current="page.selected" :class="pageLinkClass" :tabindex="page.selected ? '-1' : '0'" :aria-hidden="page.selected ? 'true' : 'false'">{{ page.content }} <span class="sr-only">(current)</span></a>
+      <a href="javascript:void(0)" v-else @click="handlePageSelected(page.index + 1)" @keyup.enter="handlePageSelected(page.index + 1)" :aria-label="helperText.pageLinkText + ' ' + page.content" :aria-current="page.selected" :class="pageLinkClass" tabindex="0">{{ page.content }} <span class="sr-only">(current)</span></a>
     </li>
 
     <li v-if="!(lastPageSelected() && hidePrevNext)" :class="[nextClass, lastPageSelected() ? disabledClass : '']">
